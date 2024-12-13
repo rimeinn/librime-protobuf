@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package rime.proto;
+
+message Commit {
+    optional string text = 1;
+}
+
+message Candidate {
+    string text = 1;
+    optional string comment = 2;
+    string label = 3;
+}
+
+message Context {
+
+    message Composition {
+        int32 length = 1;
+        int32 cursorPos = 2;
+        int32 selStart = 3;
+        int32 selEnd = 4;
+        optional string preedit = 5;
+        optional string commitTextPreview = 6;
+    }
+
+    message Menu {
+        int32 pageSize = 1;
+        int32 pageNumber = 2;
+        bool isLastPage = 3;
+        int32 highlightedCandidateIndex = 4;
+        repeated Candidate candidates = 5;
+        string selectKeys = 6;
+        repeated string selectLabels = 7;
+    }
+
+    Composition composition = 1;
+    Menu menu = 2;
+    string input = 3;
+    int32 caretPos = 4;
+}
+
+message Status {
+    string schemaId = 1;
+    string schemaName = 2;
+    bool isDisabled = 3;
+    bool isComposing = 4;
+    bool isAsciiMode = 5;
+    bool isFullShape = 6;
+    bool isSimplified = 7;
+    bool isTraditional = 8;
+    bool isAsciiPunct = 9;
+}
