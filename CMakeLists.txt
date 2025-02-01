@@ -33,7 +33,7 @@ if(BUILD_SHARED_LIBS)
 endif()
 
 add_library(rime-proto-deps INTERFACE)
-target_link_libraries(rime-proto-deps INTERFACE protobuf::libprotobuf)
+target_link_libraries(rime-proto-deps INTERFACE protobuf::libprotobuf-lite)
 
 set(plugin_name rime-proto PARENT_SCOPE)
 set(plugin_objs $<TARGET_OBJECTS:rime-proto-objs> PARENT_SCOPE)
